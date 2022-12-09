@@ -6,7 +6,9 @@ This is part of the [F# Advent Calendar in English 2022](https://sergeytihon.com
 
 Using [FSharp.Data](https://fsprojects.github.io/FSharp.Data/) we can easily pull out data we're interested in.  In this example, I extract timing and location data and use them to summarise a track workout.
 
-GPX files typically contain location snapshots every second.  By treating larger gaps (i.e. rests) differently, I can break up a workout into its constituent parts.  Using the latitude and logitude data, I can estimate the distance covered in each part using a [formula from StackOverflow](https://stackoverflow.com/a/51839058/15519).
+GPX files typically contain location snapshots every second.  By treating larger gaps (i.e. rests during a workout) differently, I can break up a workout into its constituent parts.  This is done in [ParseGpx.fs](ParseGpx.fs).
+
+Using the latitude and logitude data, I can estimate the distance covered in each part using a [formula from StackOverflow](https://stackoverflow.com/a/51839058/15519).
 
 ### Sample output
 

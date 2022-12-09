@@ -9,7 +9,7 @@ type Gpx = XmlProvider<samplePath>
 
 let minimumRest = TimeSpan.FromSeconds(15.0)
 
-type Interval = Gpx.Trkpt * Gpx.Trkpt
+type Interval = Gpx.Trkpt * Gpx.Trkpt // two GPS snapshots
 
 type Activity =
     | EffortIntervals of Interval list
@@ -23,6 +23,7 @@ let private isRest (interval: Interval) =
     let point1, point2 = interval
     point2.Time - point1.Time > minimumRest
 
+// function used to fold intervals into either efforts (built of multiple intervals) or rests (one long interval)
 let private accumulateActivities activities interval =
     match isRest interval, activities with
     | true, _ -> RestInterval interval :: activities
